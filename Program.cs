@@ -24,9 +24,20 @@ namespace StopWatch
             }
             char type = char.Parse(input.Substring(input.Length - 1, 1));
             int time = int.Parse(input.Substring(0, input.Length - 1));
-            Start(type == 's' ? time : time * 60);
+            PreStart(type == 's' ? time : time * 60);
         }
-        static void Start(int time = 10)
+        static void PreStart(int time = 10)
+        {
+            Console.Clear();
+            Console.WriteLine("Ready...");
+            Thread.Sleep(1000);
+            Console.WriteLine("Set...");
+            Thread.Sleep(1000);
+            Console.WriteLine("Go...");
+            Thread.Sleep(2500);
+            Start(time);
+        }
+        static void Start(int time)
         {
             int currentTime = 0;
 
